@@ -1,0 +1,260 @@
+/* --- Keyframe Animations --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* New flash animations for the result box */
+@keyframes flashGreen {
+    0% { background-color: rgba(46, 204, 113, 0); }
+    50% { background-color: rgba(46, 204, 113, 0.3); }
+    100% { background-color: rgba(46, 204, 113, 0); }
+}
+@keyframes flashRed {
+    0% { background-color: rgba(231, 76, 60, 0); }
+    50% { background-color: rgba(231, 76, 60, 0.3); }
+    100% { background-color: rgba(231, 76, 60, 0); }
+}
+
+
+/* --- Body and Typography --- */
+body {
+    /* New Font */
+    font-family: "Times New Roman", Times, serif;
+    margin: 0;
+    padding: 24px;
+    
+    /* Animated Gradient Background */
+    color: #333;
+    background: linear-gradient(-45deg, #e8f0ff, #f9f8ff, #e6f6ff, #f0f7ff);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    min-height: 100vh;
+}
+
+h1, h3, h4 {
+    font-family: "Times New Roman", Times, serif;
+    color: #111;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+/* --- Main Title --- */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #dde;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+/* --- Layout Cards --- */
+#input-section, 
+#animation-section, 
+#output-section {
+    background: rgba(255, 255, 255, 0.75);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 24px;
+    
+    /* Animations */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px); 
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* --- Card Hover Effect --- */
+#input-section:hover, 
+#animation-section:hover, 
+#output-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    display: flex;
+    gap: 24px;
+}
+#input-section { flex-basis: 40%; }
+#animation-section { flex-basis: 60%; }
+
+/* --- Buttons and Inputs --- */
+button {
+    padding: 10px 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2ecc71;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(46, 204, 113, 0.2);
+    transition: all 0.2s ease;
+    font-family: "Times New Roman", Times, serif;
+}
+button:hover {
+    background-color: #27ae60;
+    box-shadow: 0 6px 12px rgba(46, 204, 113, 0.3);
+    transform: translateY(-2px);
+}
+button:active {
+    transform: scale(0.98) translateY(-1px);
+    box-shadow: 0 2px 4px rgba(46, 204, 113, 0.2);
+}
+
+/* Style for number inputs */
+input[type="number"] {
+    width: 60px;
+    padding: 8px;
+    margin: 4px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: center;
+    transition: all 0.2s ease;
+    font-family: "Times New Roman", Times, serif; 
+}
+
+/* Glowing focus effect for inputs */
+input[type="number"]:focus,
+td input:focus {
+    outline: none;
+    border-color: #2ecc71;
+    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.25);
+}
+
+/* --- Input Tables --- */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 15px;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Zebra-striping */
+#input-section table > tbody > tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+#input-section table > thead > tr {
+    background-color: #e9ecef;
+}
+
+td input {
+    width: 45px;
+    padding: 6px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    font-family: "Times New Roman", Times, serif; 
+}
+
+/* --- Canvas Wrapper --- */
+#canvas-wrapper {
+    max-height: 400px; 
+    overflow-y: auto;
+    overflow-x: auto;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box; 
+    border-radius: 8px;
+}
+
+#animation-canvas {
+    border: none;
+    background-color: #ffffff;
+    display: block;
+    margin-top: 0;
+}
+
+/* --- Log Output --- */
+#log {
+    background: #2b303b;
+    color: #c0c5ce;
+    padding: 15px;
+    border-radius: 8px;
+    height: 150px;
+    overflow-y: scroll;
+    white-space: pre-wrap;
+    /* New Font */
+    font-family: "Times New Roman", Times, serif;
+    font-size: 14px; 
+    border: 1px solid #444;
+}
+
+#safe-sequence-output {
+    font-weight: 600;
+    font-size: 1.1em;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+/* Classes to trigger the flash animations */
+.flash-green {
+    animation: flashGreen 1s ease-out;
+}
+.flash-red {
+    animation: flashRed 1s ease-out;
+}
+
+
+/* --- Style the Speed Slider --- */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 150px;
+    height: 8px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
+    vertical-align: middle;
+}
+input[type="range"]:hover {
+    opacity: 1;
+}
+
+/* Slider Thumb (the circle) */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #2ecc71;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #c41a04;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}

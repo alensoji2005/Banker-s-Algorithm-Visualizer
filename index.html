@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banker's Algorithm Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Banker's Algorithm Visualizer</h1>
+    
+    <div class="container">
+        <div id="input-section">
+            <h3>Parameters</h3>
+            <div>
+                <label for="num-processes">Processes (P):</label>
+                <input type="number" id="num-processes" value="5" min="1">
+                <label for="num-resources">Resources (R):</label>
+                <input type="number" id="num-resources" value="3" min="1">
+                </div>
+            
+            <h4>Available Resources (E)</h4>
+            <div id="available-table"></div>
+            
+            <h4>Max Demand Matrix (C)</h4>
+            <div id="max-table"></div>
+            
+            <h4>Allocation Matrix (A)</h4>
+            <div id="allocation-table"></div>
+            
+            <button id="btn-run">Run Algorithm</button>
+        </div>
+        
+        <div id="animation-section">
+            <h3>Animation</h3>
+            <div id="controls">
+                <button id="btn-play-pause">▶️ Play/Pause</button>
+                <button id="btn-step-backward">⏮️ Step Back</button>
+                <button id="btn-step-forward">Step Forward ⏭️</button>
+                <label for="speed-slider">Speed:</label>
+                <input type="range" id="speed-slider" min="1" max="10" value="5">
+            </div>
+            
+            <div id="canvas-wrapper">
+                <canvas id="animation-canvas" width="800" height="400"></canvas>
+            </div>
+            
+            <button id="btn-export-png">📸 Export as PNG</button>
+        </div>
+    </div>
+    
+    <div id="output-section">
+        <h3>Execution Details & Statistics</h3>
+        <div id="safe-sequence-output">
+            <strong>Safe Sequence:</strong> <span id="safe-sequence"></span>
+        </div>
+        <div id="log-output">
+            <strong>Log:</strong>
+            <pre id="log"></pre>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
